@@ -9,7 +9,7 @@ from io import BytesIO
 def init():
     global model
     #medium, large-v1, large-v2
-    model_name = "large-v2"
+    model_name = "medium"
     model = whisper.load_model(model_name)
 
 # Inference is ran for every server call
@@ -28,7 +28,7 @@ def inference(model_inputs:dict) -> dict:
     
     # Run the model
     result = model.transcribe("input.mp3")
-    output = {"text":result["text"]}
+    #output = {"text":result["text"]}
     os.remove("input.mp3")
     # Return the results as a dictionary
-    return output
+    return result
